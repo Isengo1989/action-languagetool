@@ -44,7 +44,7 @@ run_langtool() {
   for FILE in ${FILES}; do
     echo "Checking ${FILE}..."
     curl \
-      --verbose
+      --verbose \
       --request POST \
       --data "${DATA}" \
       --data-urlencode "text=$(cat "${FILE}")" \

@@ -44,16 +44,18 @@ run_langtool() {
   for FILE in ${FILES}; do
     echo "Checking ${FILE}..."
     curl \
+      --verbose
       --request POST \
       --data "${DATA}" \
       --data-urlencode "text=$(cat "${FILE}")" \
       "${API_ENDPOINT}/v2/check" | \
       FILE="${FILE}" tmpl /langtool.tmpl
-    echo "Checked ${FILE}..."
   done
 }
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
+
+reviewdog --help
 
 run_langtool \
   | reviewdog -efm="%A%f:%l:%c: %m" -efm="%C %m" -name="LanguageTool" -reporter="${INPUT_REPORTER:-github-pr-check}" -level="${INPUT_LEVEL}"

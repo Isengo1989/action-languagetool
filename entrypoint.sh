@@ -43,7 +43,7 @@ set +o noglob
 run_langtool() {
   for FILE in ${FILES}; do
     echo "Checking ${FILE}..." >&2
-    curl --silent \
+    curl \
       --request POST \
       --data "${DATA}" \
       --data-urlencode "text=$(cat "${FILE}")" \

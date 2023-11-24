@@ -42,13 +42,14 @@ set +o noglob
 
 run_langtool() {
   for FILE in ${FILES}; do
-    echo "Checking ${FILE}..." >&2
+    echo "Checking ${FILE}..."
     curl \
       --request POST \
       --data "${DATA}" \
       --data-urlencode "text=$(cat "${FILE}")" \
       "${API_ENDPOINT}/v2/check" | \
       FILE="${FILE}" tmpl /langtool.tmpl
+    echo "Checked ${FILE}..."
   done
 }
 

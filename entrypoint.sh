@@ -64,6 +64,7 @@ echo "This is output"
 echo $OUTPUT
 echo "This was output"
 
-echo $OUTPUT | reviewdog -efm="%A%f:%l:%c: %m" -efm="%C %m" -name="LanguageTool" -reporter="${INPUT_REPORTER:-github-pr-check}" -level="${INPUT_LEVEL}" -tee
+echo $OUTPUT \
+| reviewdog -efm="%A%f:%l:%c: %m" -efm="%C %m" -name="LanguageTool" -reporter="${INPUT_REPORTER:-github-pr-check}" -level="${INPUT_LEVEL}" -tee
 
 exit 0

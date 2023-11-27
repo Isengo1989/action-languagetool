@@ -55,6 +55,8 @@ run_langtool() {
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
+echo CI_PULL_REQUEST
+
 OUTPUT=$(run_langtool)
 
 echo "This is output"
